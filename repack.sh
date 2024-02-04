@@ -4,7 +4,23 @@ epm tool eget https://raw.githubusercontent.com/alt-autorepacked/common/v0.2.0/c
 . ./common.sh
 
 _package="code"
-_download_url="https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
+
+arch="$(epm print info -a)"
+case "$arch" in
+    x86_64)
+        arch=x64
+        ;;
+    armhf)
+        ;;
+    aarch64)
+        arch=arm64
+        ;;
+    *)
+        fatal "$arch arch is not supported"
+        ;;
+esac
+
+_download_url="https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-$arch"
 
 _download() {
     real_download_url=$(epm tool eget --get-real-url $_download_url)
