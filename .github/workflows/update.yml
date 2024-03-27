@@ -7,7 +7,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 1 * * *'
 
 jobs:
   check-versions:
@@ -19,7 +19,7 @@ jobs:
         arch:
           - amd64
           - arm64
-    uses: alt-autorepacked/common/.github/workflows/update.yml@main
+    uses: alt-autorepacked/common/.github/workflows/update.yml@v0.4.0
     with:
       branch: ${{ matrix.branch }}
       arch: ${{ matrix.arch }}
