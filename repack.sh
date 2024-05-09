@@ -5,6 +5,9 @@ epm tool eget https://raw.githubusercontent.com/alt-autorepacked/common/v0.2.0/c
 
 _package="code"
 
+epm install asar --auto
+cp code.sh /etc/eepm/repack.d/code.sh
+
 arch="$(epm print info -a)"
 case "$arch" in
     x86_64)
