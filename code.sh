@@ -62,4 +62,4 @@ remove_file "${PRODUCTDIR}/code"
 
 subst '1s|#!/usr/bin/env sh|#!/usr/bin/env bash|' "$BUILDROOT/$PRODUCTDIR/bin/code"
 subst "s|ELECTRON=\\\".*\\\"|ELECTRON=\\\"/usr/bin/electron$electron_version\\\"|" "$BUILDROOT/$PRODUCTDIR/bin/code"
-subst 's|\(ELECTRON_RUN_AS_NODE=1 "\$ELECTRON" "\$CLI" \)\("\$@"\)|\1--app="\$VSCODE_PATH/resources/app" \2 2> >(grep -v "is not in the list of known options, but still passed" >&2)|' "$BUILDROOT/$PRODUCTDIR/bin/code"
+subst 's|\(ELECTRON_RUN_AS_NODE=1 "\$ELECTRON" "\$CLI" \)\("\$@"\)|\1--app="\$VSCODE_PATH/resources/app" \2 2> >(grep -v "is not in the list of known options, but still passed" >2)|' "$BUILDROOT/$PRODUCTDIR/bin/code"
